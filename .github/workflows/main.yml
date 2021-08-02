@@ -32,11 +32,11 @@ jobs:
           ls -al
           pwd
           ./test.sh
-          cp pytest-report.html ~
+          cp pytest-report.html ${{ github.workspace }}
       # Runs a set of commands using the runners shell
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
           name: reports
           path: |
-            pytest-report.html
+            ${{ github.workspace }}/pytest-report.html
