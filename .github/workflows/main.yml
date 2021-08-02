@@ -28,8 +28,6 @@ jobs:
       # Runs Unit Test
       - name: Unit Test
         run: |
-          ls -al
-          pwd
           cd ${REDIS_TEST_PATH}
           ls -al
           pwd
@@ -43,4 +41,4 @@ jobs:
         with:
           name: reports
           path: |
-            pytest-report.html
+            ${REDIS_TEST_PATH}/pytest-report.html
