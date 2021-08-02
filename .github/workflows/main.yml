@@ -11,7 +11,7 @@ on:
     branches: [ master ]
 
 env:
-  REDIS_TEST_PATH : ./DataBase/Redis/unit_test
+  REDIS_TEST_PATH : DataBase/Redis/unit_test
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -25,16 +25,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: list
-        run: |
-          ls -al 
-      # Runs a single command using the runners shell
+      # Runs Unit Test
       - name: Unit Test
         run: |
-          ls -al 
+          ls -al
+          pwd
           cd ${REDIS_TEST_PATH}
-          ls -al 
-          cd ./test.sh
+          ls -al
+          pwd
+          ./test.sh
       - name: list
         run: |
           ls -al 
