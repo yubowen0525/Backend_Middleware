@@ -38,4 +38,4 @@ jobs:
         with:
           name: reports
           path: |
-            ${REDIS_TEST_PATH}/pytest-report.html
+            ${{ REDIS_TEST_PATH }}/pytest-report.html
