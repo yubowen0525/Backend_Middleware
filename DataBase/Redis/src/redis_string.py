@@ -1,12 +1,12 @@
 import redis
-from src import redis_client
+from src import Redis
 
-class RedisString():
+class RedisString(Redis):
     def get(self, key):
         """
         Return the value at key ``name``, or None if the key doesn't exist
         """
-        return redis_client.get(key)
+        return self._redis_client.get(key)
     
     def set(self, key, **kwargs):
         """
@@ -25,8 +25,8 @@ class RedisString():
         ``keepttl`` if True, retain the time to live associated with the key.
             (Available since Redis 6.0)
         """
-        return redis_client.set(key, **kwargs)
+        return self._redis_client.set(key, **kwargs)
 
     def delete(self, *key):
         "Delete one or more keys specified by ``names``"
-        return redis_client.delete(*key)
+        return self._redis_client.delete(*key)
