@@ -13,9 +13,19 @@
 # 1. Reference
 Item | Link 
 ---------|----------
- Python Redis Client | https://github.com/andymccurdy/redis-py.git 
+官方文档 ｜ https://redis.io/commands
+ Python Redis Client | https://github.com/andymccurdy/redis-py.git
+ Redis 教程 | https://www.runoob.com/redis/redis-tutorial.html
+
 
 # 2. String
+
+structure | description 
+---------|----------
+Src | [String Resource Code](./src/redis_string.py)
+Test | [Test Code](./unit_test/test_string.py)
+
+
 
 # 3. List
 

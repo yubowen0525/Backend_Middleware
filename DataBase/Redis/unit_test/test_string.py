@@ -1,15 +1,6 @@
-import pytest
-from src.redis_string import RedisString, Redis
-import fakeredis
-from loguru import logger
+from unit_test.base import *
 import src
 import uuid
-
-@pytest.fixture(autouse=True)
-def redis_client(monkeypatch):
-    client = fakeredis.FakeStrictRedis()
-    monkeypatch.setattr(src, 'get_redis', lambda: client)
-    return client
 
 @pytest.mark.parametrize(
     "input, output",
@@ -28,7 +19,7 @@ def test_string_set_get(input, output):
     c_str = RedisString()
     flag = c_str.set(key=input["key"], value=input["value"], ex=10)
     print("flag:", flag)
-    v = c_str.get(input["key"]).decode()
+    v = c_str.get(input["key"])
     assert v == output
 
 
@@ -52,3 +43,33 @@ def test_string_setnx_delete(input):
     assert flag1 != flag2
     flag3 = c_str.delete(input["key"])
     print("delete_flag3: %s" % str(flag3))
+    
+    
+
+@pytest.mark.parametrize(
+    "input, output",
+    [
+        (
+            {"key1": 10, "key2":2, "key3":3, "key4":4},
+            {"key1": 10, "key2":2, "key3":3, "key4":4},
+        ),
+        (
+            {"key5": 500, "key6":6, "key7":7, "key8":8},
+            {"key5": 500, "key6":6, "key7":7, "key8":8},
+        ),
+    ],
+)
+def test_string_sets_gets(input:dict, output):
+    c_str = RedisString()
+    flag = c_str.sets(input)
+    print("sets_return:", flag)
+    flag = c_str.gets(list(input.keys()))
+    print("gets_return:", flag)
+    flag = c_str.incr(list(input.keys())[0])
+    print("incr_return:", flag)
+    flag = c_str.decr(list(input.keys())[0])
+    print("decr_return:", flag)
+    flags = [c_str.get_bit(list(input.keys())[0], offset=i) for i in range(32)]
+    print("get_bit_return:", flags)
+    flag = c_str.get_len(list(input.keys())[0])
+    print("len_return:", flag)
