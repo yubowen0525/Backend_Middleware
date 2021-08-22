@@ -26,11 +26,25 @@ Src | [String Resource Code](./src/redis_string.py)
 Test | [Test Code](./unit_test/test_string.py)
 
 
-
 # 3. List
 
+structure | description 
+---------|----------
+Src | [String Resource Code](./src/list.py)
+Test | [Test Code](./unit_test/test_list.py)
 # 4. Set
-
+structure | description 
+---------|----------
+Src | [String Resource Code](./src/set.py)
+Test | [Test Code](./unit_test)
 # 5. Hash
+structure | description 
+---------|----------
+Src | [String Resource Code](./src/hash.py)
+Test | [Test Code](./unit_test/test_hash.py)
 
 # 6. Sorted Set
+structure | description 
+---------|----------
+Src | [String Resource Code](./src/sorted_set.py)
+Test | [Test Code](./unit_test/test_sorted_set.py)
